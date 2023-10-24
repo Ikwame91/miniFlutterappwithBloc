@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:miniapp_with_bloc/features/home/bloc/home_bloc.dart';
 import 'package:miniapp_with_bloc/features/home/models/home_product_data_model.dart';
+import 'package:miniapp_with_bloc/features/wishlist/bloc/wishlist_bloc.dart';
 
-class ProductTileWidget extends StatelessWidget {
-  final HomeBloc homeBloc;
-  const ProductTileWidget({
+class WishListTile extends StatelessWidget {
+  final WishlistBloc wishlistBloc;
+  const WishListTile({
     Key? key,
-    required this.homeBloc,
+    required this.wishlistBloc,
     required this.productDataModel,
   }) : super(key: key);
   final ProductDataModel productDataModel;
@@ -49,23 +49,23 @@ class ProductTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "\$ ${productDataModel.price}",
+                "\$" + productDataModel.price.toString(),
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Row(
                 children: [
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(HomeProductWishlistButtonClickedEvent(
-                            clickedProduct: productDataModel));
+                        // homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                        //     clickedProduct: productDataModel));
                       },
                       icon: Icon(Icons.favorite_outline)),
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(HomeProductCartButtonClickedEvent(
-                            clickedProduct: productDataModel));
+                        // cartBloc.add(CartRemoveFromCartEvent(
+                        //     productDataModel: productDataModel));
                       },
-                      icon: Icon(Icons.shopping_bag_outlined)),
+                      icon: Icon(Icons.shopping_bag)),
                 ],
               )
             ],
