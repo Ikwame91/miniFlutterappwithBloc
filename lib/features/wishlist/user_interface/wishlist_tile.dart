@@ -56,10 +56,10 @@ class WishListTile extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        // homeBloc.add(HomeProductWishlistButtonClickedEvent(
-                        //     clickedProduct: productDataModel));
+                        wishlistBloc.add(WishlistRemoveFromWishListEvent(
+                            productDataModel: productDataModel));
                       },
-                      icon: Icon(Icons.favorite_outline)),
+                      icon: Icon(Icons.favorite_border_outlined)),
                   IconButton(
                       onPressed: () {
                         // cartBloc.add(CartRemoveFromCartEvent(
