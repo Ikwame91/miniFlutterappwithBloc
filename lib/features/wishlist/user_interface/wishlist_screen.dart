@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:miniapp_with_bloc/features/cart/bloc/cart_bloc.dart';
 import 'package:miniapp_with_bloc/features/wishlist/bloc/wishlist_bloc.dart';
 import 'package:miniapp_with_bloc/features/wishlist/user_interface/wishlist_tile.dart';
 
@@ -32,7 +31,7 @@ class _WishlistState extends State<Wishlist> {
         buildWhen: (previous, current) => current is! WishlistActionState,
         builder: (context, state) {
           switch (state.runtimeType) {
-            case CartSuccessState:
+            case WishlistSuccessState:
               final successState = state as WishlistSuccessState;
               return ListView.builder(
                   itemCount: successState.wishListItems.length,
