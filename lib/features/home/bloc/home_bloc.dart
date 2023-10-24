@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:miniapp_with_bloc/data/cart_items.dart';
 import 'package:miniapp_with_bloc/data/grocery_data.dart';
+import 'package:miniapp_with_bloc/data/wishlist_items.dart';
 import 'package:miniapp_with_bloc/features/home/models/home_product_data_model.dart';
 
 part 'home_event.dart';
@@ -38,11 +40,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> homeProductCartButtonClickedEvent(
       HomeProductCartButtonClickedEvent event, Emitter<HomeState> emit) {
     print('ProductList button Clicked');
+    cartItems.add(event.clickedProduct);
+    emit(HomeProductItemAddedCartListActionState());
   }
 
   FutureOr<void> homeProductWishlistButtonClickedEvent(
       HomeProductWishlistButtonClickedEvent event, Emitter<HomeState> emit) {
     print('Wishlist button Clicked');
+    wishListItems.add(event.clickedProduct);
+    emit(HomeProductItemAddedToWishListActionState());
   }
 
   FutureOr<void> homeCartButtonNavigateClickedEvent(
