@@ -23,16 +23,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     await Future.delayed(Duration(seconds: 3));
     emit(
       HomeLoadedSuccessfullyState(
-        product: GroceryData.groceryProducts.map(
-          (e) => ProductDataModel(
-            id: e['id'],
-            name: e['name'],
-            description: e['description'],
-            price: e['price'],
-            imageUrl: e['imageUrl'],
-          ),
-        ),
-      ),
+          product: GroceryData.groceryProducts
+              .map((e) => ProductDataModel(
+                    id: e['id'],
+                    name: e['name'],
+                    description: e['description'],
+                    price: e['price'],
+                    imageUrl: e['imageUrl'],
+                  ))
+              .toList()),
     );
   }
 
